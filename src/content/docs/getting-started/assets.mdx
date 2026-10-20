@@ -1,0 +1,29 @@
+---
+title: "Upload and import files"
+description: "Add app screens, recordings, and public App Store assets."
+sidebar:
+  order: 2
+---
+
+Use screens from your app so people can see what it does. Clear screens with useful content work better than empty states.
+
+## Upload files
+
+Open your app and add files from the asset controls in the editor or asset library. Keep a clear order when selecting screens for a screenshot set or video.
+
+| File | Supported formats | Maximum size |
+| --- | --- | --- |
+| Image | PNG, JPEG, WebP | 15 MB per file |
+| Screen recording | MP4, MOV, WebM | 100 MB per file |
+
+Upload limits and account storage limits are separate. Check account usage if an upload is refused.
+
+## Import a public listing
+
+If the app is already on the App Store, you can import its public icon, screenshots, description, and category. With MCP, use `import_from_app_store` with the numeric ID from the App Store URL.
+
+A public import does not give Appfly permission to update your store listing. [App Store Connect](/publishing/app-store-connect) uses a separate connection.
+
+## Before deleting an asset
+
+Files may be used in a project or as the app icon. The MCP `delete_asset` tool refuses to delete an asset that is still in use. It permanently deletes eligible files, so check the asset first.

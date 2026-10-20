@@ -1,0 +1,57 @@
+---
+title: "Connect an AI agent with MCP"
+description: "Set up Claude, Cursor, or another remote MCP client."
+sidebar:
+  order: 31
+---
+
+Open [MCP setup](https://fly.appfly.dev/account/mcp) in your Appfly account. Use the server address shown there. It points to `/mcp` on your Appfly instance.
+
+The server uses **Streamable HTTP**. The signed-in version of Appfly supports OAuth and API-key authentication.
+
+## Sign in with OAuth
+
+Add the server address in a compatible client, then choose its connection or authentication action. Appfly opens a sign-in and authorization page. Check the requested access before allowing the connection.
+
+## Use an API key
+
+Create a key in [Developer API](https://fly.appfly.dev/account/developer-api). Copy it when it is shown and configure your client to send:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+A key belongs to your account and can access all of your apps and spend credits. Keep it out of Git, public prompts, and shared screenshots. See [authentication](/api/authentication).
+
+## Claude Code
+
+Use the address from your account setup:
+
+```sh
+claude mcp add --transport http appfly https://fly.appfly.dev/mcp
+```
+
+Then open `/mcp` in Claude Code and authenticate. For another Appfly instance, replace the URL with the address shown in that instance’s setup.
+
+## Cursor
+
+Add a remote server in Cursor’s MCP settings or its `.cursor/mcp.json` file. For API-key authentication:
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "url": "https://fly.appfly.dev/mcp",
+      "headers": { "Authorization": "Bearer YOUR_API_KEY" }
+    }
+  }
+}
+```
+
+For OAuth, omit the headers and use the client’s sign-in flow where supported.
+
+## Other clients
+
+Use a client that supports remote MCP over Streamable HTTP and the authentication method you choose. A web-hosted client needs an address it can reach; it cannot reach your local `localhost` server.
+
+After connecting, ask: **“Check my Appfly plan and list my apps.”** Then try [a workflow](/ai/workflows).

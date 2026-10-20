@@ -1,0 +1,63 @@
+---
+title: "MCP example workflows"
+description: "Create, review, translate, and export assets with your agent."
+sidebar:
+  order: 32
+---
+
+These examples describe real registered tools. Replace example IDs with values returned by Appfly. They are not ready-made files or promises of a particular visual result.
+
+## Create screenshots
+
+> Find my app and make a screenshot set from its uploaded screens. Use short headlines. Show me the project before exporting.
+
+The agent should follow this sequence:
+
+1. `get_account` and `list_apps` to check the account and choose an app.
+2. `list_assets` and `list_styles` to choose screens and a style.
+3. `generate_screenshots` to start generation.
+4. `get_job` every few seconds until it returns a finished `projectId` or an error.
+5. `get_project` to read the result and text layer IDs.
+6. `set_text` if a headline needs editing.
+
+Example generation arguments:
+
+```json
+{
+  "appId": "YOUR_APP_ID",
+  "assetIds": ["FIRST_ASSET_ID", "SECOND_ASSET_ID"],
+  "name": "Launch screenshots",
+  "canvasPreset": "iphone-6.9",
+  "idempotencyKey": "launch-screenshots-v1"
+}
+```
+
+## Add a language
+
+> Add German and Turkish to this screenshot project. Keep English.
+
+Read the project, then call `translate_project` once for each language with `locale: "de"` and `locale: "tr"`. Review both versions. Translation requires a paid plan and uses credits.
+
+## Make a promo video
+
+> Make a short promo from my uploaded screens, with a feature highlight and a closing message.
+
+Use `list_styles`, then `generate_video`. Poll `get_job` and inspect the finished project. For an App Store preview preset, call `validate_video_export` before exporting.
+
+For a single moving device shot, use `create_mockup_video` instead. Creating that project uses no AI generation credits; export rules still apply.
+
+## Export a project
+
+Call `export_project` with a project ID and valid preset IDs from `list_styles`:
+
+```json
+{
+  "projectId": "YOUR_PROJECT_ID",
+  "presets": ["iphone-6.9"],
+  "locales": ["en", "de", "tr"]
+}
+```
+
+Poll `get_export` using the returned `renderId`. Download the files only after the export is done. The links expire after one hour; call the tool again for fresh links.
+
+Use the same idempotency key when retrying the same generation request. Use a new key for a different generation.

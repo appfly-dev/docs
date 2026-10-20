@@ -1,0 +1,26 @@
+---
+title: "Troubleshooting"
+description: "Check common upload, editor, export, and connection problems."
+sidebar:
+  order: 50
+---
+
+## A file will not upload
+
+Check its format and size. Images can be up to 15 MB; recordings can be up to 100 MB. Check your account’s remaining storage. See [assets](/getting-started/assets).
+
+## An AI result needs work
+
+Review the app details and the screens you supplied. Edit the project directly, or ask the agent to adjust text using the IDs from `get_project`. A new AI generation uses credits, so avoid repeating it before reviewing the current result.
+
+## The export is not ready
+
+Generation and rendering are separate background jobs. Check the job or export status and read any error. With MCP, use `get_job` for generation and `get_export` for rendering.
+
+## A store update fails
+
+Check the connected app, permissions, selected language, and whether the store version is editable. Review the message shown by Appfly. You still handle the final submission in App Store Connect.
+
+## I need help
+
+Email [hello@appfly.dev](mailto:hello@appfly.dev). Include the tool name, what you expected, what happened, and any error message. A project ID and a screenshot can help. Do not include passwords, API keys, or private download links.

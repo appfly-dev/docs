@@ -1,0 +1,53 @@
+---
+title: "Tools"
+description: "The tools the Appfly MCP server provides."
+sidebar:
+  order: 2
+---
+
+Tools that start work return an ID. Use [`get_job` or `get_export`](/api/jobs) to follow it. Check [`get_account`](#account) before a big run.
+
+## Account
+
+| Tool | What it does |
+|---|---|
+| `get_account` | Shows your plan, AI credits left this period, and storage used. |
+| `list_apps` | Lists your apps, newest first. |
+| `list_styles` | Lists screenshot styles, video styles, and export sizes with their IDs. |
+
+## Apps and files
+
+| Tool | What it does |
+|---|---|
+| `create_app` | Creates an app. The Free plan allows one app. |
+| `list_assets` | Lists the files uploaded to an app. |
+| `upload_asset` | Adds a file from a public `https` URL, or as base64 with a file name and MIME type. |
+| `import_from_app_store` | Copies the public App Store listing of an app into yours. |
+| `delete_asset` | Permanently deletes an uploaded file. It fails if the file is the app icon or is used in a project. |
+
+## Generate
+
+| Tool | What it does |
+|---|---|
+| `generate_screenshots` | Starts the AI to build a screenshot set from your uploaded screens. Costs 50 credits, plus 100 with `illustrate`. |
+| `generate_video` | Starts the AI to build a promo video storyboard. Costs 50 credits. Free plan videos are limited to 30 seconds. |
+| `create_mockup_video` | Makes a short video of one screenshot or recording in a phone with a motion preset. No credits. |
+
+## Edit
+
+| Tool | What it does |
+|---|---|
+| `list_projects` | Lists the screenshot sets and videos of an app. |
+| `get_project` | Shows a project's style, languages, and the text of every scene with its layer IDs. |
+| `set_text` | Changes headlines, subheads, or badges using layer IDs from `get_project`. |
+| `set_template` | Switches a screenshot set to another style. Not for videos. |
+| `translate_project` | Translates all text into another language. Costs 25 credits. Needs a paid plan. |
+| `remove_language` | Removes a language you added. English cannot be removed. |
+| `validate_video_export` | Checks a video against the App Store preview rules before you export. |
+
+## Export
+
+| Tool | What it does |
+|---|---|
+| `export_project` | Starts an export of PNG screenshots or an MP4 video. On the Free plan exports have a watermark and cost 100 credits. Paid plans export for free. |
+| `get_export` | Shows the export state and download links when it is done. |

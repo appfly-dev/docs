@@ -1,0 +1,80 @@
+---
+import DocsLayout from "../layouts/DocsLayout.astro";
+import { LinkButton } from "../components/ui/link-button";
+import { Card } from "../components/ui/card";
+import { CardGrid } from "../components/ui/card-grid";
+import { Aside } from "../components/ui/aside";
+import { getSidebar } from "@cloudflare/nimbus-docs";
+import { config } from "virtual:nimbus/config";
+
+const sidebar = await getSidebar("/", { collection: "docs" });
+---
+
+<DocsLayout title={config.title} description={config.description} sidebar={sidebar} headings={[]} breadcrumbs={[]}>
+  <Fragment slot="pagination" />
+  <Fragment slot="page-title">
+    <div class="py-4 sm:py-8">
+      <img
+        src={`${import.meta.env.BASE_URL}logo.svg`}
+        alt=""
+        width="56"
+        height="56"
+        class="size-14 object-contain"
+      />
+      <h1
+        class="mt-5 text-foreground leading-tight [text-wrap:balance]"
+        style="font-size: clamp(2.25rem, 4vw, 2.75rem); font-weight: var(--nb-h1-weight); letter-spacing: var(--nb-h1-tracking);"
+      >
+        Get your app ready to launch
+      </h1>
+      <p class="mt-3 max-w-xl text-[1.0625rem] text-muted-foreground leading-relaxed [text-wrap:pretty]">
+        Appfly is a browser app for App Store screenshots, promo videos, device
+        mockups, icons, listing text, and app websites. Learn how each tool works
+        and how to export or send your assets.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <LinkButton href="/getting-started" variant="primary" size="lg" icon>
+          Get started
+        </LinkButton>
+        <LinkButton
+          href="https://fly.appfly.dev"
+          variant="outline"
+          size="lg"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Appfly
+        </LinkButton>
+      </div>
+    </div>
+  </Fragment>
+
+  <h2>Quickstart</h2>
+  <ol>
+    <li><a href="https://fly.appfly.dev">Open Appfly</a> and sign in.</li>
+    <li>Create an app and upload a few screens.</li>
+    <li>Open <strong>Screenshots</strong>, pick a template, and edit the headlines.</li>
+    <li><a href="/publishing/exports">Export your files</a> or <a href="/publishing/app-store-connect">send them to App Store Connect</a>.</li>
+  </ol>
+
+  <Aside type="tip" title="Using an AI agent?">
+    Connect Claude, Cursor, or another agent with <a href="/ai/mcp">MCP</a> and ask it to
+    create your launch assets in plain words.
+  </Aside>
+
+  <h2>Explore the docs</h2>
+  <CardGrid>
+    <Card title="Get started" icon="ph:rocket-launch" href="/getting-started">
+      Make your first screenshot set.
+    </Card>
+    <Card title="Tools" icon="ph:paint-brush" href="/tools">
+      Screenshots, videos, mockups, graphics, copy, and websites.
+    </Card>
+    <Card title="Publishing" icon="ph:upload-simple" href="/publishing">
+      Export files or send them to App Store Connect.
+    </Card>
+    <Card title="AI and MCP" icon="ph:robot" href="/ai">
+      Let your agent create and edit assets.
+    </Card>
+  </CardGrid>
+</DocsLayout>

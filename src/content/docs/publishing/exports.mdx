@@ -1,0 +1,26 @@
+---
+title: "Export images and videos"
+description: "Download the sizes, formats, and languages for your release."
+sidebar:
+  order: 21
+---
+
+Open the export controls in your project and choose the sizes and languages you need. Screenshot exports are PNG files; video exports are MP4 files. A screenshot export may also include a ZIP bundle.
+
+## Before exporting
+
+Check the selected app, project, device sizes, and languages. Play a video preview and check that text stays readable throughout the scenes.
+
+Free exports are watermarked, smaller, and cost 100 credits per export. Solo and Pro include full-resolution exports without a watermark or per-export credit charge.
+
+## Background exports
+
+Rendering runs in the background. Wait for the export to finish before downloading. If it fails, read the error, check the project, and try again after correcting the problem.
+
+With MCP, `export_project` returns a `renderId`. Poll `get_export` every few seconds until the status is `done` or `failed`.
+
+## Download links
+
+MCP export links work without signing in and expire after one hour. Call `get_export` again to get fresh links. Treat these links as shared access to the exported files.
+
+See [MCP workflows](/ai/workflows) for a full generation and export sequence.

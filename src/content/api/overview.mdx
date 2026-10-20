@@ -1,0 +1,16 @@
+---
+title: "Agent API overview"
+description: "The Appfly MCP server: address, tools, and limits."
+sidebar:
+  order: 0
+---
+
+Appfly has one agent interface: a remote [MCP](/ai/mcp) server at `/mcp` on your Appfly address. For the hosted app this is `https://fly.appfly.dev/mcp`.
+
+- [Authentication](/api/authentication): sign in with OAuth or send an API key.
+- [Tools](/api/tools): every tool the server registers, grouped by task.
+- [Jobs and exports](/api/jobs): how background work reports progress.
+
+Every tool acts for the account that signed in. It can see all of that account's apps and spends that account's credits.
+
+Tool errors come back as readable messages, for example a plan limit or not enough credits. Anything unexpected returns a short generic error.

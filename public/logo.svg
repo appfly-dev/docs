@@ -1,0 +1,457 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Appfly</title>
+  <desc id="desc">Appfly: a white paper plane launching across a pink-accented rainbow gradient.</desc>
+  <defs>
+    <linearGradient id="brand-pink" x1="0" y1="1080" x2="1080" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e52c90" stop-opacity=".92"/>
+      <stop offset=".55" stop-color="#e52c90" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#e52c90" stop-opacity=".1"/>
+    </linearGradient>
+    <path id="outline" d="M1072.163,539.998 C1072.125,574.827 1071.045,609.651 1068.961,645.230 C1066.878,680.809 1063.790,717.143 1058.241,754.636 C1052.692,792.129 1044.680,830.782 1030.339,867.582 C1015.998,904.383 995.327,939.331 967.900,967.885 C940.473,996.439 906.291,1018.599 869.359,1032.994 C832.428,1047.389 792.748,1054.020 754.745,1058.579 C716.742,1063.138 680.417,1065.626 644.900,1067.207 C609.383,1068.788 574.674,1069.463 539.996,1069.402 C505.318,1069.341 470.671,1068.546 435.170,1066.910 C399.668,1065.274 363.313,1062.797 325.455,1058.062 C287.596,1053.326 248.234,1046.332 211.278,1032.049 C174.323,1017.766 139.773,996.194 111.989,968.007 C84.204,939.821 63.184,905.019 48.609,868.271 C34.033,831.523 25.901,792.828 20.300,755.253 C14.699,717.678 11.629,681.223 9.420,645.538 C7.211,609.854 5.862,574.941 5.932,540.017 C6.003,505.094 7.492,470.161 9.494,434.435 C11.495,398.708 14.008,362.188 18.918,324.220 C23.827,286.252 31.133,246.836 45.066,209.323 C58.999,171.809 79.560,136.199 107.176,107.217 C134.792,78.235 169.463,55.881 206.891,41.369 C244.318,26.857 284.502,20.189 323.087,16.202 C361.673,12.215 398.659,10.911 434.545,9.978 C470.431,9.045 505.217,8.483 540.006,8.433 C574.796,8.384 609.589,8.846 645.461,9.875 C681.332,10.904 718.281,12.499 756.642,16.881 C795.003,21.263 834.775,28.432 872.008,43.030 C909.241,57.628 943.936,79.655 971.538,108.470 C999.141,137.286 1019.652,172.888 1033.514,210.308 C1047.377,247.728 1054.591,286.964 1059.596,324.800 C1064.602,362.635 1067.398,399.070 1069.297,434.704 C1071.197,470.338 1072.201,505.170 1072.163,539.998 Z"/>
+    <clipPath id="clip"><use href="#outline"/></clipPath>
+    <linearGradient id="row0" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f56525"/>
+      <stop offset="0.06250" stop-color="#fa702b"/>
+      <stop offset="0.12500" stop-color="#fc7d2d"/>
+      <stop offset="0.18750" stop-color="#fd8e2c"/>
+      <stop offset="0.25000" stop-color="#fea128"/>
+      <stop offset="0.31250" stop-color="#ffb523"/>
+      <stop offset="0.37500" stop-color="#ffc620"/>
+      <stop offset="0.43750" stop-color="#fdd220"/>
+      <stop offset="0.50000" stop-color="#f2d726"/>
+      <stop offset="0.56250" stop-color="#ded631"/>
+      <stop offset="0.62500" stop-color="#c2cf40"/>
+      <stop offset="0.68750" stop-color="#a2c54f"/>
+      <stop offset="0.75000" stop-color="#7fb95e"/>
+      <stop offset="0.81250" stop-color="#60af6a"/>
+      <stop offset="0.87500" stop-color="#47a471"/>
+      <stop offset="0.93750" stop-color="#359a73"/>
+      <stop offset="1.00000" stop-color="#2a8e71"/>
+    </linearGradient>
+    <linearGradient id="row1" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#fa642c"/>
+      <stop offset="0.06250" stop-color="#fe6d30"/>
+      <stop offset="0.12500" stop-color="#ff7832"/>
+      <stop offset="0.18750" stop-color="#fe8730"/>
+      <stop offset="0.25000" stop-color="#fe992d"/>
+      <stop offset="0.31250" stop-color="#feab29"/>
+      <stop offset="0.37500" stop-color="#fcbc27"/>
+      <stop offset="0.43750" stop-color="#f7c829"/>
+      <stop offset="0.50000" stop-color="#ebce2f"/>
+      <stop offset="0.56250" stop-color="#d7ce3a"/>
+      <stop offset="0.62500" stop-color="#bcc948"/>
+      <stop offset="0.68750" stop-color="#9dc157"/>
+      <stop offset="0.75000" stop-color="#7cb865"/>
+      <stop offset="0.81250" stop-color="#5fb071"/>
+      <stop offset="0.87500" stop-color="#47a879"/>
+      <stop offset="0.93750" stop-color="#36a07e"/>
+      <stop offset="1.00000" stop-color="#2c967e"/>
+    </linearGradient>
+    <linearGradient id="fade1" x1="0" y1="0" x2="0" y2="67.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask1" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade1)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row2" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f96132"/>
+      <stop offset="0.06250" stop-color="#fd6835"/>
+      <stop offset="0.12500" stop-color="#fd7135"/>
+      <stop offset="0.18750" stop-color="#fc7d34"/>
+      <stop offset="0.25000" stop-color="#f98d31"/>
+      <stop offset="0.31250" stop-color="#f79e2f"/>
+      <stop offset="0.37500" stop-color="#f3ae2f"/>
+      <stop offset="0.43750" stop-color="#ebba32"/>
+      <stop offset="0.50000" stop-color="#dec139"/>
+      <stop offset="0.56250" stop-color="#cac243"/>
+      <stop offset="0.62500" stop-color="#b0be4f"/>
+      <stop offset="0.68750" stop-color="#93b85d"/>
+      <stop offset="0.75000" stop-color="#75b26a"/>
+      <stop offset="0.81250" stop-color="#5aac76"/>
+      <stop offset="0.87500" stop-color="#44a780"/>
+      <stop offset="0.93750" stop-color="#35a186"/>
+      <stop offset="1.00000" stop-color="#2c9989"/>
+    </linearGradient>
+    <linearGradient id="fade2" x1="0" y1="67.5" x2="0" y2="135" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask2" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade2)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row3" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f65c36"/>
+      <stop offset="0.06250" stop-color="#fa6138"/>
+      <stop offset="0.12500" stop-color="#fa6938"/>
+      <stop offset="0.18750" stop-color="#f77337"/>
+      <stop offset="0.25000" stop-color="#f38036"/>
+      <stop offset="0.31250" stop-color="#ed9036"/>
+      <stop offset="0.37500" stop-color="#e69f38"/>
+      <stop offset="0.43750" stop-color="#dbaa3d"/>
+      <stop offset="0.50000" stop-color="#ccb144"/>
+      <stop offset="0.56250" stop-color="#b8b34c"/>
+      <stop offset="0.62500" stop-color="#a0b157"/>
+      <stop offset="0.68750" stop-color="#85ac62"/>
+      <stop offset="0.75000" stop-color="#6aa86e"/>
+      <stop offset="0.81250" stop-color="#52a47a"/>
+      <stop offset="0.87500" stop-color="#3fa185"/>
+      <stop offset="0.93750" stop-color="#329e8d"/>
+      <stop offset="1.00000" stop-color="#2b9893"/>
+    </linearGradient>
+    <linearGradient id="fade3" x1="0" y1="135" x2="0" y2="202.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask3" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade3)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row4" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f3563a"/>
+      <stop offset="0.06250" stop-color="#f75b3b"/>
+      <stop offset="0.12500" stop-color="#f7613b"/>
+      <stop offset="0.18750" stop-color="#f2693c"/>
+      <stop offset="0.25000" stop-color="#eb753d"/>
+      <stop offset="0.31250" stop-color="#e2833f"/>
+      <stop offset="0.37500" stop-color="#d79043"/>
+      <stop offset="0.43750" stop-color="#c99b49"/>
+      <stop offset="0.50000" stop-color="#b8a24f"/>
+      <stop offset="0.56250" stop-color="#a4a457"/>
+      <stop offset="0.62500" stop-color="#8da260"/>
+      <stop offset="0.68750" stop-color="#759f69"/>
+      <stop offset="0.75000" stop-color="#5e9c73"/>
+      <stop offset="0.81250" stop-color="#4a9a7e"/>
+      <stop offset="0.87500" stop-color="#3a998a"/>
+      <stop offset="0.93750" stop-color="#2f9894"/>
+      <stop offset="1.00000" stop-color="#29959c"/>
+    </linearGradient>
+    <linearGradient id="fade4" x1="0" y1="202.5" x2="0" y2="270" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask4" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade4)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row5" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f1503d"/>
+      <stop offset="0.06250" stop-color="#f5543f"/>
+      <stop offset="0.12500" stop-color="#f45a40"/>
+      <stop offset="0.18750" stop-color="#ed6142"/>
+      <stop offset="0.25000" stop-color="#e36c45"/>
+      <stop offset="0.31250" stop-color="#d6784a"/>
+      <stop offset="0.37500" stop-color="#c78450"/>
+      <stop offset="0.43750" stop-color="#b68e57"/>
+      <stop offset="0.50000" stop-color="#a3945d"/>
+      <stop offset="0.56250" stop-color="#8f9664"/>
+      <stop offset="0.62500" stop-color="#79956a"/>
+      <stop offset="0.68750" stop-color="#649272"/>
+      <stop offset="0.75000" stop-color="#51907a"/>
+      <stop offset="0.81250" stop-color="#419085"/>
+      <stop offset="0.87500" stop-color="#359090"/>
+      <stop offset="0.93750" stop-color="#2d919c"/>
+      <stop offset="1.00000" stop-color="#288fa4"/>
+    </linearGradient>
+    <linearGradient id="fade5" x1="0" y1="270" x2="0" y2="337.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask5" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade5)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row6" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f04b41"/>
+      <stop offset="0.06250" stop-color="#f44f43"/>
+      <stop offset="0.12500" stop-color="#f05446"/>
+      <stop offset="0.18750" stop-color="#e75b4b"/>
+      <stop offset="0.25000" stop-color="#d96450"/>
+      <stop offset="0.31250" stop-color="#c96f57"/>
+      <stop offset="0.37500" stop-color="#b6795f"/>
+      <stop offset="0.43750" stop-color="#a28266"/>
+      <stop offset="0.50000" stop-color="#8e876d"/>
+      <stop offset="0.56250" stop-color="#7a8973"/>
+      <stop offset="0.62500" stop-color="#678878"/>
+      <stop offset="0.68750" stop-color="#55877d"/>
+      <stop offset="0.75000" stop-color="#468685"/>
+      <stop offset="0.81250" stop-color="#3a868e"/>
+      <stop offset="0.87500" stop-color="#328899"/>
+      <stop offset="0.93750" stop-color="#2c89a4"/>
+      <stop offset="1.00000" stop-color="#2989ad"/>
+    </linearGradient>
+    <linearGradient id="fade6" x1="0" y1="337.5" x2="0" y2="405" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask6" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade6)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row7" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#f04645"/>
+      <stop offset="0.06250" stop-color="#f14a4a"/>
+      <stop offset="0.12500" stop-color="#eb4f4f"/>
+      <stop offset="0.18750" stop-color="#df5556"/>
+      <stop offset="0.25000" stop-color="#cd5d5e"/>
+      <stop offset="0.31250" stop-color="#b96667"/>
+      <stop offset="0.37500" stop-color="#a46f70"/>
+      <stop offset="0.43750" stop-color="#8e7777"/>
+      <stop offset="0.50000" stop-color="#7a7c7e"/>
+      <stop offset="0.56250" stop-color="#677e83"/>
+      <stop offset="0.62500" stop-color="#577e87"/>
+      <stop offset="0.68750" stop-color="#497d8c"/>
+      <stop offset="0.75000" stop-color="#3e7d92"/>
+      <stop offset="0.81250" stop-color="#367e9a"/>
+      <stop offset="0.87500" stop-color="#3081a4"/>
+      <stop offset="0.93750" stop-color="#2d83ae"/>
+      <stop offset="1.00000" stop-color="#2b82b5"/>
+    </linearGradient>
+    <linearGradient id="fade7" x1="0" y1="405" x2="0" y2="472.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask7" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade7)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row8" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#ee424c"/>
+      <stop offset="0.06250" stop-color="#ed4653"/>
+      <stop offset="0.12500" stop-color="#e34b5b"/>
+      <stop offset="0.18750" stop-color="#d35164"/>
+      <stop offset="0.25000" stop-color="#bf576e"/>
+      <stop offset="0.31250" stop-color="#a85f78"/>
+      <stop offset="0.37500" stop-color="#926681"/>
+      <stop offset="0.43750" stop-color="#7c6d89"/>
+      <stop offset="0.50000" stop-color="#69728f"/>
+      <stop offset="0.56250" stop-color="#597493"/>
+      <stop offset="0.62500" stop-color="#4b7597"/>
+      <stop offset="0.68750" stop-color="#41769b"/>
+      <stop offset="0.75000" stop-color="#3a76a1"/>
+      <stop offset="0.81250" stop-color="#3578a8"/>
+      <stop offset="0.87500" stop-color="#317bb1"/>
+      <stop offset="0.93750" stop-color="#2f7db9"/>
+      <stop offset="1.00000" stop-color="#2e7cbd"/>
+    </linearGradient>
+    <linearGradient id="fade8" x1="0" y1="472.5" x2="0" y2="540" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask8" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade8)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row9" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#ea3f56"/>
+      <stop offset="0.06250" stop-color="#e5445f"/>
+      <stop offset="0.12500" stop-color="#d84869"/>
+      <stop offset="0.18750" stop-color="#c64d74"/>
+      <stop offset="0.25000" stop-color="#af527e"/>
+      <stop offset="0.31250" stop-color="#985988"/>
+      <stop offset="0.37500" stop-color="#815f91"/>
+      <stop offset="0.43750" stop-color="#6d6599"/>
+      <stop offset="0.50000" stop-color="#5d699e"/>
+      <stop offset="0.56250" stop-color="#4f6da3"/>
+      <stop offset="0.62500" stop-color="#456ea6"/>
+      <stop offset="0.68750" stop-color="#3e70aa"/>
+      <stop offset="0.75000" stop-color="#3972af"/>
+      <stop offset="0.81250" stop-color="#3674b6"/>
+      <stop offset="0.87500" stop-color="#3476bd"/>
+      <stop offset="0.93750" stop-color="#3377c2"/>
+      <stop offset="1.00000" stop-color="#3177c4"/>
+    </linearGradient>
+    <linearGradient id="fade9" x1="0" y1="540" x2="0" y2="607.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask9" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade9)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row10" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#e23d63"/>
+      <stop offset="0.06250" stop-color="#da426e"/>
+      <stop offset="0.12500" stop-color="#cb4679"/>
+      <stop offset="0.18750" stop-color="#b74a84"/>
+      <stop offset="0.25000" stop-color="#a04f8e"/>
+      <stop offset="0.31250" stop-color="#895498"/>
+      <stop offset="0.37500" stop-color="#7559a0"/>
+      <stop offset="0.43750" stop-color="#635ea7"/>
+      <stop offset="0.50000" stop-color="#5663ac"/>
+      <stop offset="0.56250" stop-color="#4b67b0"/>
+      <stop offset="0.62500" stop-color="#4469b4"/>
+      <stop offset="0.68750" stop-color="#3f6cb8"/>
+      <stop offset="0.75000" stop-color="#3b6ebd"/>
+      <stop offset="0.81250" stop-color="#3970c2"/>
+      <stop offset="0.87500" stop-color="#3772c7"/>
+      <stop offset="0.93750" stop-color="#3573cb"/>
+      <stop offset="1.00000" stop-color="#3471ca"/>
+    </linearGradient>
+    <linearGradient id="fade10" x1="0" y1="607.5" x2="0" y2="675" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask10" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade10)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row11" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#d73c73"/>
+      <stop offset="0.06250" stop-color="#ce417f"/>
+      <stop offset="0.12500" stop-color="#bd468a"/>
+      <stop offset="0.18750" stop-color="#a84994"/>
+      <stop offset="0.25000" stop-color="#934d9e"/>
+      <stop offset="0.31250" stop-color="#7e51a6"/>
+      <stop offset="0.37500" stop-color="#6d56ae"/>
+      <stop offset="0.43750" stop-color="#5f5ab3"/>
+      <stop offset="0.50000" stop-color="#545fb8"/>
+      <stop offset="0.56250" stop-color="#4c62bc"/>
+      <stop offset="0.62500" stop-color="#4766bf"/>
+      <stop offset="0.68750" stop-color="#4268c3"/>
+      <stop offset="0.75000" stop-color="#3f6bc7"/>
+      <stop offset="0.81250" stop-color="#3c6dcc"/>
+      <stop offset="0.87500" stop-color="#396ed0"/>
+      <stop offset="0.93750" stop-color="#376ed2"/>
+      <stop offset="1.00000" stop-color="#356ccf"/>
+    </linearGradient>
+    <linearGradient id="fade11" x1="0" y1="675" x2="0" y2="742.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask11" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade11)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row12" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#ca3c84"/>
+      <stop offset="0.06250" stop-color="#c04190"/>
+      <stop offset="0.12500" stop-color="#b0469a"/>
+      <stop offset="0.18750" stop-color="#9d49a4"/>
+      <stop offset="0.25000" stop-color="#894dac"/>
+      <stop offset="0.31250" stop-color="#7850b3"/>
+      <stop offset="0.37500" stop-color="#6a54b9"/>
+      <stop offset="0.43750" stop-color="#5f58be"/>
+      <stop offset="0.50000" stop-color="#575cc2"/>
+      <stop offset="0.56250" stop-color="#5160c5"/>
+      <stop offset="0.62500" stop-color="#4b63c9"/>
+      <stop offset="0.68750" stop-color="#4666cc"/>
+      <stop offset="0.75000" stop-color="#4268d0"/>
+      <stop offset="0.81250" stop-color="#3e6ad4"/>
+      <stop offset="0.87500" stop-color="#3b6bd7"/>
+      <stop offset="0.93750" stop-color="#386ad7"/>
+      <stop offset="1.00000" stop-color="#3567d3"/>
+    </linearGradient>
+    <linearGradient id="fade12" x1="0" y1="742.5" x2="0" y2="810" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask12" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade12)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row13" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#bc3b96"/>
+      <stop offset="0.06250" stop-color="#b341a1"/>
+      <stop offset="0.12500" stop-color="#a546aa"/>
+      <stop offset="0.18750" stop-color="#944ab2"/>
+      <stop offset="0.25000" stop-color="#844db9"/>
+      <stop offset="0.31250" stop-color="#7651be"/>
+      <stop offset="0.37500" stop-color="#6b54c4"/>
+      <stop offset="0.43750" stop-color="#6358c8"/>
+      <stop offset="0.50000" stop-color="#5c5bcb"/>
+      <stop offset="0.56250" stop-color="#565fce"/>
+      <stop offset="0.62500" stop-color="#5061d1"/>
+      <stop offset="0.68750" stop-color="#4a64d3"/>
+      <stop offset="0.75000" stop-color="#4566d6"/>
+      <stop offset="0.81250" stop-color="#4067d9"/>
+      <stop offset="0.87500" stop-color="#3c68db"/>
+      <stop offset="0.93750" stop-color="#3867da"/>
+      <stop offset="1.00000" stop-color="#3564d5"/>
+    </linearGradient>
+    <linearGradient id="fade13" x1="0" y1="810" x2="0" y2="877.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask13" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade13)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row14" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#af3aa5"/>
+      <stop offset="0.06250" stop-color="#a840af"/>
+      <stop offset="0.12500" stop-color="#9c46b7"/>
+      <stop offset="0.18750" stop-color="#8f4abd"/>
+      <stop offset="0.25000" stop-color="#824ec2"/>
+      <stop offset="0.31250" stop-color="#7751c7"/>
+      <stop offset="0.37500" stop-color="#6e55cc"/>
+      <stop offset="0.43750" stop-color="#6758d0"/>
+      <stop offset="0.50000" stop-color="#605bd3"/>
+      <stop offset="0.56250" stop-color="#595ed5"/>
+      <stop offset="0.62500" stop-color="#5260d7"/>
+      <stop offset="0.68750" stop-color="#4c62d9"/>
+      <stop offset="0.75000" stop-color="#4663db"/>
+      <stop offset="0.81250" stop-color="#4165dc"/>
+      <stop offset="0.87500" stop-color="#3d65dd"/>
+      <stop offset="0.93750" stop-color="#3964db"/>
+      <stop offset="1.00000" stop-color="#3661d5"/>
+    </linearGradient>
+    <linearGradient id="fade14" x1="0" y1="877.5" x2="0" y2="945" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask14" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade14)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row15" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#a238af"/>
+      <stop offset="0.06250" stop-color="#9d3fb8"/>
+      <stop offset="0.12500" stop-color="#9544bf"/>
+      <stop offset="0.18750" stop-color="#8b49c4"/>
+      <stop offset="0.25000" stop-color="#814dc8"/>
+      <stop offset="0.31250" stop-color="#7851cd"/>
+      <stop offset="0.37500" stop-color="#7055d1"/>
+      <stop offset="0.43750" stop-color="#6958d5"/>
+      <stop offset="0.50000" stop-color="#615ad8"/>
+      <stop offset="0.56250" stop-color="#5a5cda"/>
+      <stop offset="0.62500" stop-color="#525edb"/>
+      <stop offset="0.68750" stop-color="#4b60dc"/>
+      <stop offset="0.75000" stop-color="#4661dc"/>
+      <stop offset="0.81250" stop-color="#4162dc"/>
+      <stop offset="0.87500" stop-color="#3e63dc"/>
+      <stop offset="0.93750" stop-color="#3b63d9"/>
+      <stop offset="1.00000" stop-color="#3860d3"/>
+    </linearGradient>
+    <linearGradient id="fade15" x1="0" y1="945" x2="0" y2="1012.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask15" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade15)" d="M0 0H1080V1080H0Z"/></mask>
+    <linearGradient id="row16" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop offset="0.00000" stop-color="#9435b2"/>
+      <stop offset="0.06250" stop-color="#923bba"/>
+      <stop offset="0.12500" stop-color="#8d41c0"/>
+      <stop offset="0.18750" stop-color="#8647c4"/>
+      <stop offset="0.25000" stop-color="#7e4bc9"/>
+      <stop offset="0.31250" stop-color="#7650cd"/>
+      <stop offset="0.37500" stop-color="#6f53d2"/>
+      <stop offset="0.43750" stop-color="#6756d6"/>
+      <stop offset="0.50000" stop-color="#5f58d9"/>
+      <stop offset="0.56250" stop-color="#575adb"/>
+      <stop offset="0.62500" stop-color="#4f5bdb"/>
+      <stop offset="0.68750" stop-color="#495dda"/>
+      <stop offset="0.75000" stop-color="#445ed9"/>
+      <stop offset="0.81250" stop-color="#4160d8"/>
+      <stop offset="0.87500" stop-color="#3f61d7"/>
+      <stop offset="0.93750" stop-color="#3e61d3"/>
+      <stop offset="1.00000" stop-color="#3c5fcc"/>
+    </linearGradient>
+    <linearGradient id="fade16" x1="0" y1="1012.5" x2="0" y2="1080" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="mask16" x="0" y="0" width="1080" height="1080" maskUnits="userSpaceOnUse"><path fill="url(#fade16)" d="M0 0H1080V1080H0Z"/></mask>
+    <radialGradient id="bottom-right-color" cx="1040" cy="1100" r="590" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 130)">
+      <stop stop-color="#ef59ba" stop-opacity=".92"/>
+      <stop offset=".38" stop-color="#b54ee0" stop-opacity=".78"/>
+      <stop offset=".72" stop-color="#8552e7" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#8552e7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="plane-fold" x1="435" y1="640" x2="720" y2="365" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#dce4f3"/>
+      <stop offset="1" stop-color="#f5f7fc"/>
+    </linearGradient>
+    <filter id="plane-shadow" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#25204b" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#clip)">
+    <path fill="url(#row0)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row1)" mask="url(#mask1)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row2)" mask="url(#mask2)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row3)" mask="url(#mask3)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row4)" mask="url(#mask4)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row5)" mask="url(#mask5)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row6)" mask="url(#mask6)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row7)" mask="url(#mask7)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row8)" mask="url(#mask8)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row9)" mask="url(#mask9)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row10)" mask="url(#mask10)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row11)" mask="url(#mask11)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row12)" mask="url(#mask12)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row13)" mask="url(#mask13)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row14)" mask="url(#mask14)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row15)" mask="url(#mask15)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#row16)" mask="url(#mask16)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#bottom-right-color)" d="M0 0H1080V1080H0Z"/>
+    <path fill="url(#brand-pink)" d="M0 0H1080V1080H0Z"/>
+  </g>
+  <g filter="url(#plane-shadow)">
+    <g transform="translate(540 540) scale(1.15) translate(-540 -540)">
+    <path fill="#fff" d="M259 462 798 262Q827 251 818 282L676 800Q668 830 647 808L503 656 421 737Q403 755 405 729L418 580 258 508Q224 492 259 462Z"/>
+    <path fill="url(#plane-fold)" d="M418 580 757 319 471 626 405 743 418 580Z"/>
+    <path fill="#c9d4e8" d="M471 626 503 656 421 737Q403 755 405 729L471 626Z"/>
+    </g>
+  </g>
+</svg>

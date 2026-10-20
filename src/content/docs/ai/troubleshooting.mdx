@@ -1,0 +1,34 @@
+---
+title: "MCP troubleshooting"
+description: "Resolve connection, generation, and export problems."
+sidebar:
+  order: 33
+---
+
+## The client cannot connect
+
+Copy the current server address from your Appfly MCP setup. Check that the client supports remote MCP over Streamable HTTP. A web-hosted client needs a publicly reachable address.
+
+If the setup page says MCP needs the signed-in version, that runtime does not provide the account-based server. Use the signed-in Appfly instance.
+
+## Authentication fails
+
+Authenticate again through the client, or check that the API-key header uses `Authorization: Bearer YOUR_API_KEY`. A revoked key will not work. Create a new key only if needed; you cannot reveal an old key’s full value again.
+
+## The app, asset, or project is missing
+
+Call `list_apps`, `list_assets`, or `list_projects` to get IDs from the current account. Check the selected app. Do not reuse IDs from another workspace or assume a display name is an ID.
+
+## Generation is still running
+
+Keep the returned `jobId`. Poll `get_job` every few seconds and stop when the status is `done` or `failed`. Do not start another generation just because the first request returned a job ID.
+
+If the service returns a fallback layout, review its note. Appfly can return a plain layout and refund credits when AI generation is unavailable.
+
+## Translation or export is blocked
+
+Call `get_account` to check the plan, credits, and storage. Translation needs a paid plan. Free exports have different costs and limits.
+
+## A download link expired
+
+Call `get_export` again with the render ID. Finished exports return fresh signed links. See [jobs and exports](/api/jobs).

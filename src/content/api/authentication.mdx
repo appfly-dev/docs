@@ -1,0 +1,28 @@
+---
+title: "Authentication"
+description: "Connect to the Appfly MCP server with OAuth or an API key."
+sidebar:
+  order: 1
+---
+
+The server accepts two kinds of credentials. Both are sent as a bearer token and both act as your account.
+
+## OAuth
+
+An MCP client that supports OAuth finds the sign-in flow from the server's `401` response. It then opens an Appfly page where you check the access and click Allow. You do not copy anything.
+
+## API key
+
+Create a key in [Developer API](https://fly.appfly.dev/account/developer-api) and send it on every request:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+A key belongs to you, not to one app. It can work in all your apps and spend your credits. Keep it out of Git, public prompts, and shared screenshots.
+
+## Requests without credentials
+
+A request with no valid token gets `401`. The `WWW-Authenticate` header points to the OAuth metadata so a client can start the sign-in flow.
+
+See [Connect an AI agent](/ai/mcp) for client setup.

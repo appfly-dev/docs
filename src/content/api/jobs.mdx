@@ -1,0 +1,20 @@
+---
+title: "Jobs and exports"
+description: "Follow background work from generation and export tools."
+sidebar:
+  order: 3
+---
+
+Generation and export take time, so their tools return right away with an ID.
+
+## Generation jobs
+
+`generate_screenshots` and `generate_video` return a `jobId`. Call `get_job` with it. The status is `queued`, `running`, `done`, or `failed`. Jobs usually take under a minute, so wait a few seconds between calls. When the status is `done`, the result has a `projectId` you can edit and export.
+
+Both tools take an optional `idempotencyKey`. Send the same key if you retry, so one request does not run twice.
+
+## Exports
+
+`export_project` returns a `renderId`. Call `get_export` until its status is `done`. Finished exports include download links that work without signing in and expire after one hour. Call `get_export` again for fresh links.
+
+You can export up to five sizes at once, and up to 20 languages.
