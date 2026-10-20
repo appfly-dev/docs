@@ -1,0 +1,82 @@
+---
+title: "Connect with OAuth"
+description: "Sign in to Appfly from your agent and click Allow. No key to copy."
+sidebar:
+  label: "OAuth (sign in)"
+  order: 32
+---
+
+With OAuth you do not copy any secret. Your agent opens an Appfly page, you check what it asks for, and you click **Allow**. The agent then gets its own access token and renews it by itself.
+
+Use OAuth when you work on your own computer with a client like Claude Code, Cursor, or the Claude app. If your client cannot open a browser, use an [API key](/ai/mcp-api-key) instead.
+
+## Connect your agent
+
+<Steps>
+
+1. Open [MCP setup](https://fly.appfly.dev/account/mcp) and copy the server address.
+
+2. Add the server in your client **without** an `Authorization` header. See [quick setup by client](/ai/mcp#quick-setup-by-client).
+
+3. Start the sign-in in your client. In Claude Code this is `/mcp`, then **Authenticate**. In Cursor and the Claude app it starts when you connect.
+
+4. Appfly opens in your browser. If you are not signed in, sign in first. You come back to the same request after that.
+
+5. Read the page, then click **Allow**.
+
+6. Your browser goes back to your agent. It is connected.
+
+</Steps>
+
+Test it by asking: “Check my Appfly plan and list my apps.”
+
+## What you see on the Allow page
+
+The page is called **Connect an agent**. It shows:
+
+- The name the agent gave itself, for example “Claude Code”.
+- The Appfly account it will use, shown as your email.
+- What it will be able to do: create and delete apps and files, generate screenshots and videos with AI (which uses your credits), and edit and export your work.
+- Where you will be sent back to after you choose.
+
+<Aside type="caution" title="Only allow what you started">
+Click **Allow** only if you just started this from your own agent. If you did not, click **Deny** and close the page.
+</Aside>
+
+If you click **Deny**, your agent gets an `access_denied` answer and nothing is connected.
+
+## How long it lasts
+
+The agent holds two tokens:
+
+- An **access token** that works for 1 hour.
+- A **refresh token** that works for 30 days. The agent uses it to get a new access token before the old one ends. Each refresh also gives a new refresh token, and the old one stops working.
+
+If the agent is used at least once every 30 days, it stays connected. If it sits unused longer than that, it asks you to sign in again.
+
+## See and remove connections
+
+Open [Developer API](https://fly.appfly.dev/account/developer-api). Under **Connected agents** you see each agent you allowed, when it connected, and when it was last used.
+
+Click **Disconnect** to remove one. It stops working at once. The agent can ask you to sign in again later.
+
+## Redirect addresses
+
+When a client connects for the first time, it registers itself with Appfly and tells it where to send you back. Appfly accepts:
+
+- `https` addresses.
+- `http` addresses only on `localhost`, `127.0.0.1`, or `[::1]`. The port can change each time.
+- App addresses like `cursor://`.
+
+Appfly rejects `javascript:`, `data:`, and similar schemes. If a client uses another kind of address, the sign-in page shows “The redirect address does not match the one this app registered” and does not redirect.
+
+## If sign-in fails
+
+| What you see | What to do |
+|---|---|
+| “This app is not registered” | Start the sign-in again from your agent. |
+| “The redirect address does not match” | Remove the server from your client and add it again. |
+| The agent says the connection expired | Run the sign-in again. Refresh tokens end after 30 days without use. |
+| Claude on the web cannot connect | It cannot reach `localhost`. Use a public address. |
+
+More fixes are in [MCP troubleshooting](/ai/troubleshooting). For the endpoints and the exact flow, see [Authentication](/api/authentication#oauth-flow).

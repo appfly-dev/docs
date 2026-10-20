@@ -1,28 +1,213 @@
 ---
 title: "Authentication"
-description: "Connect to the Appfly MCP server with OAuth or an API key."
+description: "How the Appfly MCP server checks who you are: OAuth endpoints, API keys, tokens, and limits."
 sidebar:
   order: 1
 ---
 
-The server accepts two kinds of credentials. Both are sent as a bearer token and both act as your account.
+The MCP server at `/mcp` accepts two kinds of credentials. Both are sent as a bearer token, and both act as your account. This page is the technical reference. For setup steps, see [Connect with OAuth](/ai/mcp-oauth) and [Connect with an API key](/ai/mcp-api-key).
 
-## OAuth
+| | OAuth access token | API key |
+|---|---|---|
+| Prefix | `afo_` | `af_live_` |
+| Lifetime | 1 hour, renewed with a refresh token | Until revoked |
+| Made by | The OAuth flow, after you click Allow | You, on the Developer API page |
+| Revoked by | Disconnect the agent | Revoke the key |
 
-An MCP client that supports OAuth finds the sign-in flow from the server's `401` response. It then opens an Appfly page where you check the access and click Allow. You do not copy anything.
-
-## API key
-
-Create a key in [Developer API](https://fly.appfly.dev/account/developer-api) and send it on every request:
+Send either one like this:
 
 ```http
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer <token or key>
 ```
 
-A key belongs to you, not to one app. It can work in all your apps and spend your credits. Keep it out of Git, public prompts, and shared screenshots.
+The server finds out which kind it is from the prefix. A key that was revoked, or a token that expired, is treated as no credentials.
 
 ## Requests without credentials
 
-A request with no valid token gets `401`. The `WWW-Authenticate` header points to the OAuth metadata so a client can start the sign-in flow.
+A request with no valid credentials gets `401`. The response includes a `WWW-Authenticate` header that points to the OAuth metadata, so a client can start the sign-in on its own:
 
-See [Connect an AI agent](/ai/mcp) for client setup.
+```http
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer realm="appfly-mcp", resource_metadata="https://fly.appfly.dev/.well-known/oauth-protected-resource"
+```
+
+## OAuth flow
+
+Appfly follows the OAuth 2.0 authorization code flow with PKCE, which MCP clients use. You do not need to do this by hand if your client supports MCP. It is listed here for people who build a client.
+
+<Steps>
+
+1. **Discover.** Read the protected resource metadata, then the authorization server metadata.
+
+2. **Register.** The client registers itself and gets a `client_id`.
+
+3. **Authorize.** The client sends you to `/oauth/authorize` with a PKCE challenge. You sign in and click Allow. Appfly redirects back with a `code`.
+
+4. **Get tokens.** The client sends the `code` and its PKCE verifier to `/oauth/token` and gets an access token and a refresh token.
+
+5. **Call the server.** The client sends the access token to `/mcp`.
+
+6. **Refresh.** Before the access token ends, the client sends the refresh token to `/oauth/token` for a new pair.
+
+</Steps>
+
+### Endpoints
+
+| Path | Purpose |
+|---|---|
+| `/.well-known/oauth-protected-resource` | Says that `/mcp` is the resource and which server signs people in. |
+| `/.well-known/oauth-authorization-server` | Lists the endpoints below, the supported grants, and PKCE methods. |
+| `/oauth/register` | Dynamic client registration. |
+| `/oauth/authorize` | The Allow page. |
+| `/oauth/token` | Exchanges a code or a refresh token for tokens. |
+
+These endpoints use no cookies. They allow requests from any web page, so browser-based clients can use them.
+
+### What Appfly supports
+
+| Setting | Value |
+|---|---|
+| Response types | `code` |
+| Grant types | `authorization_code`, `refresh_token` |
+| PKCE | `S256` only |
+| Client type | Public. `token_endpoint_auth_method` is `none`, so there is no client secret. |
+| Scope | `mcp` |
+
+### 1. Register a client
+
+```sh
+curl -X POST https://fly.appfly.dev/oauth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_name": "My agent",
+    "redirect_uris": ["http://localhost:8123/callback"]
+  }'
+```
+
+The answer has status `201` and includes the `client_id`:
+
+```json
+{
+  "client_id": "…",
+  "client_name": "My agent",
+  "redirect_uris": ["http://localhost:8123/callback"],
+  "token_endpoint_auth_method": "none",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"]
+}
+```
+
+Rules for `redirect_uris`:
+
+- Give 1 to 5 addresses, each at most 2048 characters.
+- Use `https`, an app scheme like `cursor://`, or `http` on `localhost`, `127.0.0.1`, or `[::1]`.
+- No fragment, no username or password, and no `javascript:`, `data:`, `vbscript:`, `file:`, `blob:`, or `about:`.
+- For a local `http` address, the port may differ from the registered one at sign-in time. The host and path must match.
+
+`client_name` is shown on the Allow page. It is cut to 80 characters, and the default is “MCP client”.
+
+### 2. Send the person to authorize
+
+Make a random `code_verifier` of 43 to 128 characters. The `code_challenge` is its SHA-256 hash, base64url encoded without padding. It is always 43 characters.
+
+```txt
+https://fly.appfly.dev/oauth/authorize
+  ?response_type=code
+  &client_id=CLIENT_ID
+  &redirect_uri=http%3A%2F%2Flocalhost%3A8123%2Fcallback
+  &code_challenge=CODE_CHALLENGE
+  &code_challenge_method=S256
+  &state=RANDOM_STATE
+```
+
+If the person is not signed in, Appfly asks them to sign in and then returns to this same request. After they choose, Appfly redirects to your `redirect_uri`:
+
+- **Allow:** `?code=…&state=…`
+- **Deny:** `?error=access_denied&state=…`
+- **Bad request:** `?error=unsupported_response_type` or `?error=invalid_request`, when the client and redirect address are fine but the request is not.
+
+If the `client_id` or the `redirect_uri` is wrong, Appfly shows an error page and does **not** redirect. This stops the page from being used as an open redirect.
+
+The `code` works once and ends after 60 seconds.
+
+### 3. Exchange the code
+
+Send a form, not JSON:
+
+```sh
+curl -X POST https://fly.appfly.dev/oauth/token \
+  -d grant_type=authorization_code \
+  -d client_id=CLIENT_ID \
+  -d code=CODE \
+  -d redirect_uri=http://localhost:8123/callback \
+  -d code_verifier=CODE_VERIFIER
+```
+
+The `redirect_uri` must be exactly the one used in step 2. The answer:
+
+```json
+{
+  "access_token": "afo_…",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "afr_…",
+  "scope": "mcp"
+}
+```
+
+### 4. Refresh
+
+```sh
+curl -X POST https://fly.appfly.dev/oauth/token \
+  -d grant_type=refresh_token \
+  -d client_id=CLIENT_ID \
+  -d refresh_token=REFRESH_TOKEN
+```
+
+You get a new access token **and** a new refresh token. The old refresh token stops working, so always save the new one. A refresh token ends after 30 days. Each refresh starts a new 30 days.
+
+### OAuth errors
+
+Errors are JSON with `error` and `error_description`:
+
+| `error` | When |
+|---|---|
+| `invalid_request` | A required field is missing, or the body is not a form. |
+| `invalid_client` | The `client_id` is not known. |
+| `invalid_grant` | The code or refresh token is wrong, used already, expired, or was issued to another client. The PKCE verifier does not match. |
+| `unsupported_grant_type` | Use `authorization_code` or `refresh_token`. |
+| `invalid_redirect_uri` | A redirect address is not allowed at registration. |
+| `invalid_client_metadata` | The registration body is not a JSON object. |
+
+Responses with tokens are never cached.
+
+## API keys
+
+A key starts with `af_live_` and is followed by random characters. Create keys on the [Developer API](https://fly.appfly.dev/account/developer-api) page.
+
+- Appfly stores a hash of the key. The full value is shown once, when you create it.
+- You can have up to 20 active keys per account.
+- A key name can be up to 60 characters.
+- The list shows the first characters of each key, the creation date, and the last use. The last-use time is updated at most once a minute.
+- Revoking a key works at once and cannot be undone.
+
+A key is tied to your account, not to one app.
+
+## Access and limits
+
+Both credentials give the same access as your account: all apps, files, and credits, within your plan. Nothing narrows it to one app or to read-only use. There is one scope, `mcp`.
+
+| Limit | Value |
+|---|---|
+| MCP requests | 120 per minute for each account |
+| Token requests | 120 per minute, shared |
+| Client registrations | 30 per hour, shared |
+
+When you go over a limit, Appfly answers `429` with a `retry-after` header.
+
+## Keep credentials safe
+
+- Do not put keys or tokens in Git, prompts, screenshots, or chat.
+- Use one key per tool, so you can revoke one at a time.
+- Revoke a key or disconnect an agent as soon as you stop using it, or if you think it leaked.
+- Use `https` addresses in production. Only `localhost` may use plain `http`.

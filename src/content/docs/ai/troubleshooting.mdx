@@ -2,7 +2,7 @@
 title: "MCP troubleshooting"
 description: "Resolve connection, generation, and export problems."
 sidebar:
-  order: 33
+  order: 35
 ---
 
 ## The client cannot connect
@@ -14,6 +14,10 @@ If the setup page says MCP needs the signed-in version, that runtime does not pr
 ## Authentication fails
 
 Authenticate again through the client, or check that the API-key header uses `Authorization: Bearer YOUR_API_KEY`. A revoked key will not work. Create a new key only if needed; you cannot reveal an old key’s full value again.
+
+- **OAuth:** a connection ends if the agent is not used for 30 days, or if you disconnected it. Run the sign-in again. See [Connect with OAuth](/ai/mcp-oauth#if-sign-in-fails).
+- **API key:** a `401` means the key is wrong or was revoked. Check the key on the Developer API page. See [Connect with an API key](/ai/mcp-api-key#see-check-and-revoke-keys).
+- **Too many requests:** a `429` means you went over 120 requests per minute. Wait and try again.
 
 ## The app, asset, or project is missing
 

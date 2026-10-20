@@ -1,0 +1,109 @@
+---
+title: "Connect with an API key"
+description: "Create an API key and send it as a Bearer token."
+sidebar:
+  label: "API key"
+  order: 33
+---
+
+An API key is a long secret that lets a client use your Appfly account without signing in. You create it once, paste it into your client, and it works until you revoke it.
+
+Use a key for scripts, CI jobs, servers, and any client that cannot open a browser. For everyday use on your own computer, [OAuth](/ai/mcp-oauth) is easier.
+
+## Create a key
+
+<Steps>
+
+1. Open [Developer API](https://fly.appfly.dev/account/developer-api) in Appfly.
+
+2. Under **API keys**, type a name. Use the name of the tool that will use the key, like “Claude Code” or “Nightly script”.
+
+3. Click **Create key**.
+
+4. Copy the key right away. Appfly shows it only once.
+
+</Steps>
+
+A key looks like this:
+
+```txt
+af_live_k3Jx...
+```
+
+It always starts with `af_live_`. Appfly keeps only a hashed copy, so it cannot show you the key again. If you lose it, revoke it and make a new one.
+
+You can have up to 20 keys. Give each tool its own key, so you can revoke one without breaking the others.
+
+## Use the key
+
+Send the key in the `Authorization` header on every request to the MCP server:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+<Tabs syncKey="client">
+<TabItem label="Claude Code">
+
+```sh
+claude mcp add --transport http appfly https://fly.appfly.dev/mcp \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+</TabItem>
+<TabItem label="Cursor">
+
+Add this to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "url": "https://fly.appfly.dev/mcp",
+      "headers": { "Authorization": "Bearer YOUR_API_KEY" }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem label="curl">
+
+A quick test of the key. This asks the server which tools it has:
+
+```sh
+curl -i https://fly.appfly.dev/mcp \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
+A `401` answer means the key is wrong or was revoked. Any other answer means the server accepted the key.
+
+</TabItem>
+</Tabs>
+
+Replace `YOUR_API_KEY` with your key. For another Appfly address, use the address shown in your MCP setup page.
+
+## What a key can do
+
+A key acts as you. It belongs to your account, not to one app. It can use all your apps and files, spend your AI credits, and delete things. It follows your plan limits.
+
+<Aside type="danger" title="Keep keys secret">
+Do not put a key in Git, in a public prompt, in a screenshot, or in a shared chat. Use an environment variable or your client's secret store. Anyone with the key can use your account and spend your credits.
+</Aside>
+
+## See, check, and revoke keys
+
+The **API keys** list on the [Developer API](https://fly.appfly.dev/account/developer-api) page shows each key's name, the first characters of the key, when you made it, and when it was last used. “Never used” means no client has called the server with that key.
+
+Click **Revoke** to turn a key off. It stops working at once, and you cannot undo it. Make a new key if you still need access.
+
+If you think a key leaked, revoke it first. Then create a new one and update your clients.
+
+## Limits
+
+Appfly allows up to 120 MCP requests per minute for each account. When you go over, the server answers `429` with a `retry-after` header. Wait and try again.
+
+For all the technical details, see [Authentication](/api/authentication#api-keys).

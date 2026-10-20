@@ -9,6 +9,8 @@
     "/account/plans",
     "/ai",
     "/ai/mcp",
+    "/ai/mcp-api-key",
+    "/ai/mcp-oauth",
     "/ai/troubleshooting",
     "/ai/workflows",
     "/api/authentication",

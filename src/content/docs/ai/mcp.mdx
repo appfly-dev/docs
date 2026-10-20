@@ -1,41 +1,85 @@
 ---
 title: "Connect an AI agent with MCP"
-description: "Set up Claude, Cursor, or another remote MCP client."
+description: "Choose how to connect Claude, Cursor, or another agent to Appfly: sign in with OAuth or use an API key."
 sidebar:
   order: 31
 ---
 
-Open [MCP setup](https://fly.appfly.dev/account/mcp) in your Appfly account. Use the server address shown there. It points to `/mcp` on your Appfly instance.
+Appfly has a remote [MCP](https://modelcontextprotocol.io) server. Once your agent is connected, you can ask it in plain words to make screenshots, videos, and translations in your account.
 
-The server uses **Streamable HTTP**. The signed-in version of Appfly supports OAuth and API-key authentication.
+Open [MCP setup](https://fly.appfly.dev/account/mcp) in Appfly to see your server address. For the hosted app it is:
 
-## Sign in with OAuth
-
-Add the server address in a compatible client, then choose its connection or authentication action. Appfly opens a sign-in and authorization page. Check the requested access before allowing the connection.
-
-## Use an API key
-
-Create a key in [Developer API](https://fly.appfly.dev/account/developer-api). Copy it when it is shown and configure your client to send:
-
-```http
-Authorization: Bearer YOUR_API_KEY
+```txt
+https://fly.appfly.dev/mcp
 ```
 
-A key belongs to your account and can access all of your apps and spend credits. Keep it out of Git, public prompts, and shared screenshots. See [authentication](/api/authentication).
+The server uses **Streamable HTTP**. Your agent must support remote MCP servers.
 
-## Claude Code
+## Pick a connection method
 
-Use the address from your account setup:
+There are two ways to let an agent act as you. Both give the same access. They differ in how you set them up and how you take access away.
+
+| | [OAuth (sign in)](/ai/mcp-oauth) | [API key](/ai/mcp-api-key) |
+|---|---|---|
+| Setup | Add the server address, then click Allow in your browser | Create a key in Appfly and paste it into your agent |
+| You handle a secret | No | Yes. You copy and store the key |
+| Lasts | Access renews on its own for 30 days after the last refresh | Until you revoke it |
+| Remove access | Disconnect the agent on the Developer API page | Revoke the key on the Developer API page |
+| Good for | Claude Code, Cursor, and the Claude app on your own computer | Scripts, CI, servers, and clients that cannot open a browser |
+
+If you are not sure, start with OAuth. It is the easiest, and you never copy a secret.
+
+<CardGrid>
+<Card title="Connect with OAuth" icon="ph:sign-in" href="/ai/mcp-oauth">Sign in once and click Allow. Nothing to copy.</Card>
+<Card title="Connect with an API key" icon="ph:key" href="/ai/mcp-api-key">Create a key and send it as a Bearer token.</Card>
+</CardGrid>
+
+## What an agent can do
+
+Either method gives the agent the same access as your account. It can see all your apps and files, create and delete apps and files, generate screenshots and videos with AI, edit text and styles, and export your work.
+
+It uses your plan limits and your credits. A key or a connection is never limited to one app. See the [tool reference](/api/tools) for every tool.
+
+## Quick setup by client
+
+Use the address above in each example. These show both methods side by side.
+
+<Tabs syncKey="client">
+<TabItem label="Claude Code">
+
+**OAuth:**
 
 ```sh
 claude mcp add --transport http appfly https://fly.appfly.dev/mcp
 ```
 
-Then open `/mcp` in Claude Code and authenticate. For another Appfly instance, replace the URL with the address shown in that instance’s setup.
+Then open `/mcp` inside Claude Code, choose **appfly**, and choose **Authenticate**.
 
-## Cursor
+**API key:**
 
-Add a remote server in Cursor’s MCP settings or its `.cursor/mcp.json` file. For API-key authentication:
+```sh
+claude mcp add --transport http appfly https://fly.appfly.dev/mcp \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+</TabItem>
+<TabItem label="Cursor">
+
+Add the server to `.cursor/mcp.json`, or use Settings and then MCP.
+
+**OAuth:** leave out the headers. Cursor opens the sign-in page.
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "url": "https://fly.appfly.dev/mcp"
+    }
+  }
+}
+```
+
+**API key:**
 
 ```json
 {
@@ -48,10 +92,31 @@ Add a remote server in Cursor’s MCP settings or its `.cursor/mcp.json` file. F
 }
 ```
 
-For OAuth, omit the headers and use the client’s sign-in flow where supported.
+</TabItem>
+<TabItem label="Claude app">
 
-## Other clients
+In Claude, open **Settings**, then **Connectors**, then **Add custom connector**. Paste the server address and sign in when asked. This uses OAuth.
 
-Use a client that supports remote MCP over Streamable HTTP and the authentication method you choose. A web-hosted client needs an address it can reach; it cannot reach your local `localhost` server.
+Claude on the web needs an address it can reach from the internet. It cannot reach `localhost`.
 
-After connecting, ask: **“Check my Appfly plan and list my apps.”** Then try [a workflow](/ai/workflows).
+</TabItem>
+<TabItem label="Other clients">
+
+Use any client that supports remote MCP over Streamable HTTP. Give it the server address. It will either start the OAuth sign-in on its own, or you can send the key header:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+</TabItem>
+</Tabs>
+
+## Check that it works
+
+After you connect, ask your agent:
+
+> Check my Appfly plan and list my apps.
+
+The agent should call `get_account` and `list_apps`. If it cannot connect, see [MCP troubleshooting](/ai/troubleshooting). Then try an [example workflow](/ai/workflows).
+
+For the technical details of both methods, including the endpoints, see [Authentication](/api/authentication).
