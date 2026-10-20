@@ -40,76 +40,16 @@ Either method gives the agent the same access as your account. It can see all yo
 
 It uses your plan limits and your credits. A key or a connection is never limited to one app. See the [tool reference](/api/tools) for every tool.
 
-## Quick setup by client
+## Set up your agent
 
-Use the address above in each example. These show both methods side by side.
+The [agent setup guide](/ai/clients) has the commands for each agent, for both methods:
 
-<Tabs syncKey="client">
-<TabItem label="Claude Code">
-
-**OAuth:**
-
-```sh
-claude mcp add --transport http appfly https://fly.appfly.dev/mcp
-```
-
-Then open `/mcp` inside Claude Code, choose **appfly**, and choose **Authenticate**.
-
-**API key:**
-
-```sh
-claude mcp add --transport http appfly https://fly.appfly.dev/mcp \
-  --header "Authorization: Bearer YOUR_API_KEY"
-```
-
-</TabItem>
-<TabItem label="Cursor">
-
-Add the server to `.cursor/mcp.json`, or use Settings and then MCP.
-
-**OAuth:** leave out the headers. Cursor opens the sign-in page.
-
-```json
-{
-  "mcpServers": {
-    "appfly": {
-      "url": "https://fly.appfly.dev/mcp"
-    }
-  }
-}
-```
-
-**API key:**
-
-```json
-{
-  "mcpServers": {
-    "appfly": {
-      "url": "https://fly.appfly.dev/mcp",
-      "headers": { "Authorization": "Bearer YOUR_API_KEY" }
-    }
-  }
-}
-```
-
-</TabItem>
-<TabItem label="Claude app">
-
-In Claude, open **Settings**, then **Connectors**, then **Add custom connector**. Paste the server address and sign in when asked. This uses OAuth.
-
-Claude on the web needs an address it can reach from the internet. It cannot reach `localhost`.
-
-</TabItem>
-<TabItem label="Other clients">
-
-Use any client that supports remote MCP over Streamable HTTP. Give it the server address. It will either start the OAuth sign-in on its own, or you can send the key header:
-
-```http
-Authorization: Bearer YOUR_API_KEY
-```
-
-</TabItem>
-</Tabs>
+<CardGrid>
+<Card title="Claude Code" icon="ph:terminal-window" href="/ai/clients">`claude mcp add --transport http appfly https://fly.appfly.dev/mcp`</Card>
+<Card title="Cursor" icon="ph:cursor" href="/ai/clients">Add the server to `.cursor/mcp.json`.</Card>
+<Card title="Codex" icon="ph:code" href="/ai/clients">`codex mcp add appfly --url https://fly.appfly.dev/mcp`</Card>
+<Card title="Claude app, VS Code, Gemini CLI, and more" icon="ph:plugs-connected" href="/ai/clients">Steps and commands for each one.</Card>
+</CardGrid>
 
 ## Check that it works
 

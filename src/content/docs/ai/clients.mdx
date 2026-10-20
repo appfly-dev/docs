@@ -1,0 +1,270 @@
+---
+title: "Set up your agent"
+description: "Commands to connect Claude Code, Claude, Cursor, Codex, VS Code, Gemini CLI, and other agents to Appfly."
+sidebar:
+  label: "Agent setup"
+  order: 32
+---
+
+Pick your agent below. Each tab shows how to connect with [OAuth](/ai/mcp-oauth) (sign in) and with an [API key](/ai/mcp-api-key).
+
+Every example uses the hosted server address:
+
+```txt
+https://fly.appfly.dev/mcp
+```
+
+If you use another Appfly address, copy yours from [MCP setup](https://fly.appfly.dev/account/mcp).
+
+## Before you start
+
+- **OAuth:** nothing to prepare. You sign in in your browser.
+- **API key:** create a key on the [Developer API](https://fly.appfly.dev/account/developer-api) page. Then save it in an environment variable, so it does not end up in a config file or in Git:
+
+```sh
+export APPFLY_API_KEY="af_live_..."
+```
+
+<Aside type="caution" title="Agent versions change">
+These steps follow each agent's own documentation. Menus and commands can change. If a command does not work, check your agent's MCP docs, or see [MCP troubleshooting](/ai/troubleshooting).
+</Aside>
+
+## Choose your agent
+
+<Tabs syncKey="agent">
+<TabItem label="Claude Code">
+
+**OAuth**
+
+```sh
+claude mcp add --transport http appfly https://fly.appfly.dev/mcp
+```
+
+Then sign in. Inside Claude Code run `/mcp`, choose **appfly**, and follow the browser sign-in. Or run this in your shell:
+
+```sh
+claude mcp login appfly
+```
+
+**API key**
+
+```sh
+claude mcp add --transport http appfly https://fly.appfly.dev/mcp \
+  --header "Authorization: Bearer $APPFLY_API_KEY"
+```
+
+**Share it with a project (optional)**
+
+Add `--scope project` to save the server in `.mcp.json`. Use a variable so the key is not written into the file:
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "type": "http",
+      "url": "https://fly.appfly.dev/mcp",
+      "headers": { "Authorization": "Bearer ${APPFLY_API_KEY}" }
+    }
+  }
+}
+```
+
+**Check it**
+
+```sh
+claude mcp list
+```
+
+You should see `appfly` as connected.
+
+</TabItem>
+<TabItem label="Claude app">
+
+The Claude app and claude.ai use custom connectors. They connect with OAuth.
+
+1. Open **Settings**, then **Connectors**.
+2. Choose **Add custom connector**.
+3. Enter the name `Appfly` and the server address `https://fly.appfly.dev/mcp`.
+4. Click **Add**, then **Connect**. Sign in to Appfly and click **Allow**.
+
+Claude on the web needs an address it can reach from the internet. It cannot reach `localhost`.
+
+Custom connectors are not on every Claude plan. If you do not see the option, check your plan or ask your workspace admin.
+
+</TabItem>
+<TabItem label="Cursor">
+
+**OAuth**
+
+Add the server to `.cursor/mcp.json` in your project, or to `~/.cursor/mcp.json` for all projects:
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "url": "https://fly.appfly.dev/mcp"
+    }
+  }
+}
+```
+
+Cursor shows a sign-in prompt for the server. Click it and allow access in your browser.
+
+**API key**
+
+Cursor can read environment variables in `headers`:
+
+```json
+{
+  "mcpServers": {
+    "appfly": {
+      "url": "https://fly.appfly.dev/mcp",
+      "headers": { "Authorization": "Bearer ${env:APPFLY_API_KEY}" }
+    }
+  }
+}
+```
+
+Start Cursor from a shell where `APPFLY_API_KEY` is set, or the variable will be empty.
+
+You can also add the server in Cursor under **Settings**, then **MCP**.
+
+</TabItem>
+<TabItem label="Codex">
+
+**OAuth**
+
+```sh
+codex mcp add appfly --url https://fly.appfly.dev/mcp
+codex mcp login appfly
+```
+
+The second command opens your browser. Sign in and click **Allow**.
+
+**API key**
+
+Add the server to `~/.codex/config.toml`, or to `.codex/config.toml` in a project you trust:
+
+```toml
+[mcp_servers.appfly]
+url = "https://fly.appfly.dev/mcp"
+bearer_token_env_var = "APPFLY_API_KEY"
+```
+
+Codex reads the key from the `APPFLY_API_KEY` environment variable. The key itself is not stored in the file.
+
+**Check it**
+
+```sh
+codex mcp list
+```
+
+</TabItem>
+<TabItem label="VS Code">
+
+VS Code uses GitHub Copilot's agent mode for MCP.
+
+**OAuth**
+
+Run this in a terminal. It adds the server to your VS Code user profile:
+
+```sh
+code --add-mcp '{"name":"appfly","type":"http","url":"https://fly.appfly.dev/mcp"}'
+```
+
+Or open the Command Palette and run **MCP: Add Server**, choose **HTTP**, and enter the address. VS Code asks you to sign in when it first connects.
+
+**API key**
+
+Add this to `.vscode/mcp.json`. VS Code asks for the key the first time the server starts, and stores it safely:
+
+```json
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "appfly-key",
+      "description": "Appfly API key",
+      "password": true
+    }
+  ],
+  "servers": {
+    "appfly": {
+      "type": "http",
+      "url": "https://fly.appfly.dev/mcp",
+      "headers": { "Authorization": "Bearer ${input:appfly-key}" }
+    }
+  }
+}
+```
+
+The top-level key is `servers`, not `mcpServers`.
+
+</TabItem>
+<TabItem label="Gemini CLI">
+
+**OAuth**
+
+```sh
+gemini mcp add --transport http appfly https://fly.appfly.dev/mcp
+```
+
+Then start Gemini CLI and run:
+
+```txt
+/mcp auth appfly
+```
+
+OAuth needs a browser on the same computer. It does not work over plain SSH or in a container with no browser. Use an API key there.
+
+**API key**
+
+```sh
+gemini mcp add --transport http appfly https://fly.appfly.dev/mcp \
+  --header "Authorization: Bearer $APPFLY_API_KEY"
+```
+
+This saves the key in your Gemini settings file. By default the server is saved for the current project. Add `--scope user` to save it for all projects.
+
+**Check it**
+
+```sh
+gemini mcp list
+```
+
+</TabItem>
+<TabItem label="Other agents">
+
+Any agent that supports remote MCP over **Streamable HTTP** can connect. You need two things:
+
+- The server address: `https://fly.appfly.dev/mcp`.
+- A way to sign in: OAuth, or the header `Authorization: Bearer YOUR_API_KEY`.
+
+If your agent supports OAuth, add the server with no header. The agent gets a `401` answer, finds the sign-in page, and opens your browser.
+
+If it only supports headers, add the header with an API key.
+
+If your agent only supports local (stdio) MCP servers, it cannot connect to Appfly directly. Use a bridge tool that turns a remote server into a local one, such as `mcp-remote`:
+
+```sh
+npx -y mcp-remote https://fly.appfly.dev/mcp
+```
+
+For the exact details of how the server checks credentials, see [Authentication](/api/authentication).
+
+</TabItem>
+</Tabs>
+
+## Check that it works
+
+After you connect, ask your agent:
+
+> Check my Appfly plan and list my apps.
+
+It should call `get_account` and `list_apps`. Then try an [example workflow](/ai/workflows).
+
+## If something goes wrong
+
+- A `401` or a sign-in loop: see [MCP troubleshooting](/ai/troubleshooting#authentication-fails).
+- OAuth problems: see [Connect with OAuth](/ai/mcp-oauth#if-sign-in-fails).
+- Key problems: see [Connect with an API key](/ai/mcp-api-key#see-check-and-revoke-keys).

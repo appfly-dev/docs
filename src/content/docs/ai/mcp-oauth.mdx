@@ -3,7 +3,7 @@ title: "Connect with OAuth"
 description: "Sign in to Appfly from your agent and click Allow. No key to copy."
 sidebar:
   label: "OAuth (sign in)"
-  order: 32
+  order: 33
 ---
 
 With OAuth you do not copy any secret. Your agent opens an Appfly page, you check what it asks for, and you click **Allow**. The agent then gets its own access token and renews it by itself.
@@ -16,7 +16,7 @@ Use OAuth when you work on your own computer with a client like Claude Code, Cur
 
 1. Open [MCP setup](https://fly.appfly.dev/account/mcp) and copy the server address.
 
-2. Add the server in your client **without** an `Authorization` header. See [quick setup by client](/ai/mcp#quick-setup-by-client).
+2. Add the server in your client **without** an `Authorization` header. See the [agent setup guide](/ai/clients) for your agent.
 
 3. Start the sign-in in your client. In Claude Code this is `/mcp`, then **Authenticate**. In Cursor and the Claude app it starts when you connect.
 
