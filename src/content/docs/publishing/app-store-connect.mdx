@@ -1,26 +1,49 @@
 ---
 title: "App Store Connect"
-description: "Connect your app and send supported assets to an editable release."
+description: "Connect your app, send listing changes, and release to the App Store."
 sidebar:
   order: 22
 ---
 
 App Store Connect is a separate connection from importing a public App Store listing. Open your app’s store connection settings and follow the setup shown there.
 
-You can import a listing on Free. Sending screenshots, previews, and listing text requires Solo or Pro. Some advanced store tools require Pro; see [plans](/account/plans).
+You can import a listing on Free. Sending screenshots, previews, and listing text requires Solo or Pro. Releases, which push your changes, submit them to App Review, and track the result, require Pro. See [plans](/account/plans).
 
-## Prepare a release
+## Connect your app
+
+Create an App Store Connect API key with the **App Manager** role and download the `.p8` file. Apple lets you download it once. Then enter the Issuer ID, Key ID, and the contents of the `.p8` file in the connection settings. Choose where the key is kept:
+
+- **Save in Appfly.** The private key is encrypted before it is stored. You can use the connection from any computer, and long pushes keep running in the background.
+- **Keep on this computer.** The key stays in this browser and is never sent to Appfly. Appfly receives only short-lived access tokens to talk to Apple. Clearing site data removes the key, so keep your original `.p8` file. Keep the page open while publishing. A long upload may need another try when the access token expires.
+
+To switch between the two, disconnect the app first and connect it again.
+
+## Send listing changes
 
 1. Connect the correct app.
 2. Choose an editable version in App Store Connect.
 3. Review screenshot sizes, languages, preview videos, and listing text.
 4. Send the supported changes from Appfly.
-5. Open App Store Connect, review the release, and submit it yourself.
 
 If a version is not editable, choose or create an editable version through Apple before sending changes.
 
+## Releases (Pro)
+
+A release gathers everything for one App Store version and walks you through six steps:
+
+1. **Changes.** Choose what the default page, each custom product page, and each A/B test gets. Changes save as you go.
+2. **Preview.** See each place as it will look in the App Store and what changed since the last release. Nothing is sent yet.
+3. **Push.** Send the changes to App Store Connect. You can cancel a push while it runs. If steps fail, retry and only what did not go through is sent again.
+4. **Review info.** Attach a build, write release notes, and fill in the details App Review asks for. Choose how the version goes live: manually, after approval, or on a scheduled date, with an optional phased release.
+5. **Submit.** Send the release to App Review. If a submit fails, retry carries on where it stopped.
+6. **Track.** Follow Apple’s review status, which refreshes every 20 seconds. Once the release is approved, you can release it from here.
+
+While a release is with App Review its changes are fixed. Withdraw the submission to edit it again. You lose your place in the review queue, and nothing is deleted.
+
+Appfly runs the steps, but Apple decides the review. Check the review info and the log before you submit.
+
 ## What MCP does
 
-The MCP server can generate and export launch assets. It does not register tools for publishing a store release or submitting an app for review.
+The MCP server can generate and export launch assets. It does not register tools for pushing a release or submitting an app for review.
 
-Use the browser store tools for supported App Store Connect operations. Check the app’s messages if a connection, permission, or version state blocks an update.
+Use the browser tools for App Store Connect operations. Check the app’s messages if a connection, permission, or version state blocks an update.
