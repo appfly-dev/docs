@@ -1,20 +1,61 @@
 ---
-title: "Google Play assets"
-description: "Export visuals and upload them in Play Console."
+title: "Google Play"
+description: "Connect your app, send listing changes, and roll out a build on Google Play."
 sidebar:
   order: 23
 ---
 
-You can use Appfly to prepare images and promo graphics for a Google Play listing. Choose formats that meet the requirements of the Play Console field where you will use them.
+Connect an app to Google Play to send your listing text, screenshots, and feature graphic to the store, and to roll out a build you have already uploaded. This is a separate connection from App Store Connect, and an app can have both.
 
-## Workflow
+Every plan can connect an app and prepare and preview a release. Sending changes to Google Play and rolling out a build are part of Pro. See [plans](/account/plans).
 
-1. Create the images or video in Appfly.
-2. Review the text and app screens.
-3. Export the supported sizes and formats.
-4. Download the files.
-5. Upload them in Google Play Console and review the listing there.
+## Connect your app
 
-Appfly’s Google Play workflow is an asset export workflow. It is not a direct connection that uploads or submits your Android app.
+Appfly talks to Google Play through a service account.
 
-Check the current requirements in Play Console before preparing a final release. See [exports](/publishing/exports) for download formats and plan limits.
+1. In Google Cloud, create a service account and add a **JSON** key. Enable the **Google Play Android Developer API** for its project.
+2. In Play Console, open **Users and permissions** and invite the service account’s email address with access to your app: store presence and releases.
+3. In Appfly, open **Store → Google Play → Connect**, choose the `.json` file, and enter your app’s package name, for example `com.company.app`.
+
+Permissions can take a few minutes to start working. The app must already exist in Play Console. Appfly cannot create one.
+
+Choose where the key is kept:
+
+- **Save in Appfly.** The key file is encrypted before it is stored. You can use the connection from any computer, and long pushes keep running in the background.
+- **Keep on this computer.** The key stays in this browser and is never sent to Appfly. Appfly receives only a short-lived signed request to talk to Google. Clearing site data removes the key, so keep your original `.json` file. Keep the page open while publishing.
+
+To switch between the two, disconnect the app first and connect it again.
+
+## What Appfly sends
+
+A push to Google Play updates the listing for each language you wrote:
+
+- **Listing text.** The title, a short description, and the full description. Your subtitle becomes the short description. Keywords and promotional text have no place on Google Play, so they are not sent.
+- **Screenshots.** Phone, 7-inch tablet, and 10-inch tablet sets. Google Play needs at least two phone screenshots and takes up to eight in each set.
+- **Feature graphic.** One image at exactly 1024 × 500.
+
+Text is cut to Google Play’s limits when it is sent: 30 characters for the title, 80 for the short description, and 4,000 for the full description. The Preview step shows the text as it will be sent. A language Google Play does not offer is skipped, and the push log names it.
+
+Google Play replaces a whole language’s listing, so Appfly reads what is there first and keeps the fields you did not change.
+
+## Releases (Pro)
+
+A Google Play release walks you through five steps:
+
+1. **Changes.** Choose the screenshot sets, feature graphic, and listing text. Changes save as you go.
+2. **Preview.** See the search result and app page on Android phones, and what changed since the last release. Nothing is sent yet.
+3. **Push.** Send the listing to Google Play. You can cancel a push while it runs. If steps fail, retry and only what did not go through is sent again.
+4. **Rollout.** Choose a build, a track, and who gets it: everyone, or a share of users for a staged rollout. You can also save it as a draft in Play Console and start it there.
+5. **Track.** Follow the rollout, which refreshes every 30 seconds. You can halt it, resume it, widen the share, or release it to everyone.
+
+Appfly chooses among builds you have already uploaded to Google Play. It does not upload app bundles. Google Play checks the rollout before it starts, and if it refuses, nothing changes.
+
+Google Play has no review submission like App Store Connect’s, and Appfly does not submit your app for review. Google Play reviews a release on its own schedule, and it can take a while after a rollout starts before users see it.
+
+## What is not included
+
+Custom store listings and store listing experiments are managed in Play Console. Google Play’s API does not offer them to Appfly, so Appfly does not either.
+
+## What MCP does
+
+The MCP server can generate and export launch assets. It does not register tools for pushing a release or rolling out a build. Use the browser tools for Google Play operations.
