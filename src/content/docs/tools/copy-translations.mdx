@@ -7,6 +7,10 @@ sidebar:
 
 Open **ASO Copy** to work on the text for your store listing. Start with your app details, generate a draft if useful, then edit it yourself.
 
+## Write with AI
+
+Press the sparkle button in the header of **ASO Copy** for the AI actions. Choose a **writing approach** (Balanced, Benefit-led, Search-first, or Short and punchy), then **Write everything** to draft every field in the language you have open, or **Write one field** to draft only one. The approach stays chosen until you change it. The AI keeps the text you can still use. You can also use the spark inside a field.
+
 ## Review a draft
 
 Check the title, description, and other listing fields. Replace vague claims with a clear description of what the app does. Confirm that the text matches the current app release.
@@ -19,6 +23,6 @@ On Pro, you can also ask [Appfly AI](/ai/chat) in the chat to translate a projec
 
 MCP translation uses `translate_project`. English is the base language and cannot be removed. Call the tool once for each new language. The agent can use `set_text` to edit individual text layers in a selected language.
 
-Listing copy in the browser and screenshot project text through MCP are different workflows. The MCP server does not expose a general listing-copy generation tool.
+An agent can also work on your listing text. `get_aso` reads it, `save_aso` writes or replaces the text of a language, and `create_aso_variant` adds a variant. Saving only saves the text in Appfly: nothing is sent to the App Store. `save_aso` replaces the whole language, so the agent should read it first. The MCP server has no tool that asks the AI to draft listing text for you. See [what an agent can do](/ai/mcp-capabilities).
 
 See [AI credits](/account/plans), [MCP workflows](/ai/workflows), and [App Store Connect](/publishing/app-store-connect).

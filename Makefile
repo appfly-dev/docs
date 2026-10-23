@@ -1,3 +1,5 @@
+PNPM := $(shell command -v pnpm 2>/dev/null || echo npx --yes pnpm)
+
 .PHONY: help install dev build preview typecheck lint lint-fix clean
 
 help:
@@ -12,25 +14,25 @@ help:
 	@echo "  make clean      Remove build artifacts"
 
 install:
-	pnpm install
+	$(PNPM) install
 
 dev:
-	pnpm dev
+	$(PNPM) dev
 
 build:
-	pnpm build
+	$(PNPM) build
 
 preview:
-	pnpm preview
+	$(PNPM) preview
 
 typecheck:
-	pnpm typecheck
+	$(PNPM) typecheck
 
 lint:
-	pnpm lint:docs
+	$(PNPM) lint:docs
 
 lint-fix:
-	pnpm lint:docs:fix
+	$(PNPM) lint:docs:fix
 
 clean:
 	rm -rf dist .astro

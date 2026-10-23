@@ -21,6 +21,14 @@ Rendering runs in the background. Wait for the export to finish before downloadi
 
 With MCP, `export_project` returns a `renderId`. Poll `get_export` every few seconds until the status is `done` or `failed`.
 
+## Delete an export
+
+Open **Exports** in your app. Use the menu on a finished, failed or canceled export, or right-click it, and choose **Delete export**. Its files and download links are removed and the project stays. An export that is still running has to finish, or be canceled, first.
+
+To delete several, hold **Cmd** (**Ctrl** on Windows) to show a checkbox on each row, pick them, and delete from the bar at the bottom. Exports that are still running cannot be selected. Old exports are also deleted for you after a while.
+
+With MCP, `list_exports` shows the latest exports and `delete_export` removes one.
+
 ## Download links
 
 MCP export links work without signing in and expire after one hour. Call `get_export` again to get fresh links. Treat these links as shared access to the exported files.

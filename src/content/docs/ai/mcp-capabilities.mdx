@@ -1,0 +1,93 @@
+---
+title: "What an agent can do"
+description: "What your agent can create, edit, export and delete through the Appfly MCP server, what it cannot do, and what it costs."
+sidebar:
+  order: 32
+---
+
+Once an agent is [connected](/ai/mcp), it can do most of what you do in Appfly for an app, except sending anything to a store. This page shows what it can create, edit and delete, and where it stops. Every tool is listed in the [tool reference](/api/tools).
+
+An agent acts as you. It uses your plan limits and your credits, and it can see all your apps and files.
+
+## At a glance
+
+| Area | Create | Edit | Delete |
+| --- | --- | --- | --- |
+| Apps and files | Create an app, upload a file, copy an App Store listing | | Delete a file |
+| Screenshot sets | Generate a set with AI | Change text, switch style, add languages | Delete a set, remove a language |
+| Promo videos | Generate a storyboard with AI | Change text, add languages | Delete a video |
+| Mockups | Make a moving mockup, ask AI for a setup | | Delete a mockup |
+| Graphics | Make a graphic from your screenshots | Change text | Delete a graphic |
+| App icons | Create a design, have AI design one | Rename, change colours, mark and size | Delete a design |
+| Listing text (ASO) | Add a variant, write a language | Replace the text of a language, rename a variant | Delete a variant or a language |
+| Keywords | Track a keyword | | Stop tracking a keyword |
+| Website | Build a site, write a privacy, terms or support page | Rewrite a section, restyle | |
+| Exports | Export PNG or MP4 | | Delete an export |
+
+A project is a screenshot set, graphic, video or mockup. Deleting one also deletes its exports.
+
+## Create
+
+- **Screenshot sets and promo videos.** The AI writes headlines and builds the project from the screens you uploaded. This runs in the background: follow it with `get_job`.
+- **Graphics.** `create_graphic` turns screenshots into a feature image or social card in one style and format.
+- **Mockups.** `create_mockup_video` puts one screenshot or recording in a phone with a motion preset. It uses no AI credits. `suggest_mockup_setup` asks the AI for the colours, phone finish, motion and length first.
+- **App icons.** `create_icon` makes a design. `design_icon_with_ai` has the AI design one, with new colours, a new mark, or both.
+- **Listing text.** `save_aso` writes the text of one language in a variant. `create_aso_variant` adds a variant to compare.
+- **Keywords.** `add_keyword` tracks a keyword in a store country, and `list_keywords` shows where your app ranks for each.
+- **Website.** `build_website` creates a site as a draft. `write_site_page` writes a privacy, terms or support page.
+
+## Edit
+
+- **Text and style** of a screenshot set, graphic or video: `get_project` shows every text with its layer ID, `set_text` changes it, and `set_template` switches a screenshot set to another style.
+- **Languages.** `translate_project` adds a language to a project.
+- **App icons.** `update_icon` changes any part of a design: the two gradient colours, the mark colour, a letter or symbol, and its size. It does not replace the app's current icon.
+- **Listing text.** `save_aso` replaces the whole language, so the agent should read it with `get_aso` first and send every field it keeps. Fields are cut to the store limits.
+- **Website.** `rewrite_site_section` rewrites one section as a whole, and `restyle_site` picks new colours and a font. Both save to the draft only. Nothing is public until `publish_site`, which an agent should call only when you ask.
+
+## Export
+
+`export_project` starts an export of PNG screenshots or an MP4 video, and `get_export` returns download links when it is done. `list_exports` shows the latest exports of an app. Links work without signing in and expire after one hour.
+
+## Delete
+
+These tools are marked **destructive**, so a client can ask you before it runs one. A deletion cannot be undone.
+
+| Tool | What it removes | What stays |
+| --- | --- | --- |
+| `delete_asset` | An uploaded file. It fails if the file is the app icon or is used in a project. | |
+| `delete_project` | A screenshot set, graphic, video or mockup, with its saved versions and exports. It fails while an unfinished release uses it. | Uploaded files |
+| `delete_export` | A finished export and its files, so its links stop working. | The project |
+| `delete_icon` | A saved icon design. | The app's current icon and exported images |
+| `delete_aso_variant` | A listing variant and the text of all its languages. The last variant stays. | |
+| `delete_aso_language` | The saved text of one language in a variant. English stays. | The App Store |
+| `delete_keyword` | A tracked keyword. | |
+| `remove_language` | A language added to a project. English stays. | |
+
+## What an agent cannot do
+
+- **Send anything to a store.** It cannot push listing text or screenshots, submit a release for review, or roll one out. Saving listing text only saves it in Appfly. You do the rest in [App Store Connect](/publishing/app-store-connect) or [Google Play](/publishing/google-play).
+- **Take a website down,** or change a domain.
+- **Move layers, change backgrounds, or change device frames** inside an existing project. It edits the text and the style.
+- **Change your plan, billing or API keys.**
+- **Work on someone else's account.** A key or a connection is for your account only.
+
+## Credits and plans
+
+| Action | Cost |
+| --- | --- |
+| Generate a screenshot set or a promo video | 50 credits (screenshots add 100 with `illustrate`) |
+| Make a graphic | 50 credits |
+| Translate a project into one language | 25 credits. Needs a paid plan. |
+| Rewrite a website section | 15 credits |
+| Restyle a website, write a website page | 10 credits |
+| Design an app icon with AI | 10 credits |
+| Suggest a mockup setup | 10 credits |
+| Make a moving mockup | No credits |
+| Edit text, rename, save listing text, delete | No credits |
+| Export | Free on Solo and Pro. On the Free plan, exports are watermarked and cost 100 credits. |
+
+Keyword tracking needs a paid plan, and the Free plan keeps one app icon. Ask the agent to run `get_account` before a large job so it knows your balance. See [AI credits and plans](/account/plans).
+
+## Appfly AI in the chat
+
+The chat in Appfly uses the same tools, with two differences. It never gets the destructive tools above, and it cannot upload files or create apps. See [Chat with Appfly AI](/ai/chat).

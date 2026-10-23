@@ -9,11 +9,21 @@ Open **Mockups** in your app and choose a screen to show. Use a 2D frame or a 3D
 
 Use a mockup when you need a device visual for a website, social post, or release announcement. Check that the app screen is readable and the frame fits the image.
 
+## AI actions in the mockup editor
+
+Press the sparkle button at the top of the mockup editor for the AI actions:
+
+- **Suggest a setup** changes the background, the phone finish, the motion and the length.
+- **New look** changes only the background and the phone finish.
+- **New motion** changes only the motion and the length.
+
+Each costs 10 AI credits and applies as ordinary edits, so one **Undo** takes it back. The finish is set on every device in the mockup. A new motion replaces the keyframes of every device, so use **New look** to keep keyframes you made by hand.
+
 ## Make a moving mockup
 
 The MCP tool `create_mockup_video` creates a short clip from one screenshot or recording. You can choose a motion preset, aspect ratio, duration, 2D or 3D rendering, and background and accent colors.
 
-Creating this clip uses no AI generation credits. [Export costs and limits](/account/plans) still apply.
+Creating this clip uses no AI generation credits. To get a suggestion first, an agent can call `suggest_mockup_setup`, which costs 10 credits. [Export costs and limits](/account/plans) still apply.
 
 ## Example request
 

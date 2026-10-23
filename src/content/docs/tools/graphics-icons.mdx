@@ -13,12 +13,22 @@ Choose the format for the place you will use the image. Add app screens, device 
 
 ## Work on an icon
 
-Add a description of your app and the look you want. Use AI to try a design, then review the result in the editor. Keep the icon readable at a small size.
+Open an icon design and choose a letter, a symbol or an image for the mark, then set the gradient behind it. Keep the icon readable at a small size.
 
-AI image generation uses credits. Your plan also limits how many icons you can keep for an app.
+### AI actions
+
+Press the sparkle button in the header of the icon editor for the AI actions:
+
+- **Design with AI** picks a new gradient and mark.
+- **New colors** changes only the colours.
+- **New mark** changes only the letter or symbol and its size.
+
+A new design is applied to your icon as an ordinary edit, so you can keep adjusting it. Run an action again for another design. Each costs 10 AI credits, and nothing is spent if the AI is unavailable. Your plan limits how many icons you can keep for an app: the Free plan keeps one.
+
+### Delete several icons
+
+Hold **Cmd** (**Ctrl** on Windows) in the icon list to show a checkbox on each design, then click the ones you want. A bar at the bottom lets you delete them all at once. Your current app icon and exported images stay.
 
 ## MCP availability
 
-The registered MCP tools currently focus on screenshots, videos, project text, translation, and export. They do not include website creation or app icon generation. Use these editors in the browser.
-
-For supported agent tasks, see [MCP tools](/api/tools).
+An agent can make a graphic with `create_graphic`, and create, change and delete app icons with `create_icon`, `update_icon`, `design_icon_with_ai` and `delete_icon`. It can edit a graphic's text but not move its layers. See [what an agent can do](/ai/mcp-capabilities) and the [tool reference](/api/tools).
