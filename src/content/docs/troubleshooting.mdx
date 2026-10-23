@@ -13,6 +13,12 @@ Check its format and size. Images can be up to 15 MB; recordings can be up to 10
 
 Review the app details and the screens you supplied. Edit the project directly, or ask the agent to adjust text using the IDs from `get_project`. A new AI generation uses credits, so avoid repeating it before reviewing the current result.
 
+## The Appfly AI chat does not work
+
+The chat is part of the Pro plan. If it says it is not available, check your plan on the [billing page](https://fly.appfly.dev/account/billing). If it says you do not have enough credits, see [plans and credits](/account/plans).
+
+A screenshot set or promo video shows a progress card in the chat. If you reload while it runs, the card comes back and keeps following the job. If the card says it could not be made, read the reason on it and try again. Use the bin icon to clear the conversation and start fresh. See [Chat with Appfly AI](/ai/chat).
+
 ## The export is not ready
 
 Generation and rendering are separate background jobs. Check the job or export status and read any error. With MCP, use `get_job` for generation and `get_export` for rendering.
